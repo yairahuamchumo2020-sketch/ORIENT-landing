@@ -1,0 +1,77 @@
+---
+---
+
+<section class="relative overflow-hidden bg-bg-dark py-24 sm:py-32 border-b border-border-dark">
+  <!-- Градиентное свечение на фоне -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(249,115,22,0.1),transparent_50%)]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(34,47,76,0.15),transparent_50%)]"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Текст -->
+      <div class="lg:col-span-7">
+        <span class="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent ring-1 ring-inset ring-accent/20 mb-6 uppercase tracking-wider">
+          Завод-производитель «ОРИЕНТ»
+        </span>
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-5xl xl:text-6xl mb-6 leading-tight">
+          Высокопрочные андезитные блоки <span class="text-accent">напрямую с завода</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl">
+          Производим стеновые блоки, перегородки и вентиляционные шахты из экологически чистого вулканического сырья в Приморье. Полностью автоматизированное импортное производство без ручного труда. Работаем с НДС.
+        </p>
+
+        <!-- Список УТП на главном экране -->
+        <div class="grid grid-cols-2 gap-4 mb-8 text-sm">
+          <div class="flex items-center gap-2.5">
+            <span class="text-accent text-base">🛡️</span>
+            <span class="text-slate-200 font-medium">18+ лет на рынке</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="text-accent text-base">📐</span>
+            <span class="text-slate-200 font-medium">Идеальная геометрия</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="text-accent text-base">📄</span>
+            <span class="text-slate-200 font-medium">Паспорта качества ГОСТ</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <span class="text-accent text-base">🚛</span>
+            <span class="text-slate-200 font-medium">Собственная доставка</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/catalog" class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3.5 text-sm font-bold text-white shadow-sm hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] transition-all">
+            Открыть каталог
+          </a>
+          <a href="#calculator" class="inline-flex items-center justify-center rounded-md border border-border-dark bg-slate-900/50 px-6 py-3.5 text-sm font-bold text-slate-200 shadow-sm hover:bg-slate-800 hover:border-slate-700 active:scale-[0.98] transition-all">
+            Рассчитать объем стен
+          </a>
+        </div>
+      </div>
+
+      <!-- Изображение / Индустриальный Рендер -->
+      <div class="lg:col-span-5 relative group">
+        <div class="aspect-square w-full rounded-2xl bg-bg-card border border-border-dark overflow-hidden shadow-2xl relative">
+          <!-- Эффект сетки на фоне блока -->
+          <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] z-10 pointer-events-none"></div>
+          
+          <!-- Изображение завода -->
+          <img 
+            src="/images/factory-hero.png" 
+            alt="Производственная площадка завода Ориент" 
+            class="object-cover w-full h-full opacity-60 group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          
+          <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-bg-dark via-bg-dark/80 to-transparent z-20">
+            <span class="text-xs font-bold text-accent uppercase tracking-wider mb-1 block">Надеждинский район</span>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Раздольненский завод поставляет продукцию во Владивосток, Уссурийск, Находку, Артём и на Сахалин.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

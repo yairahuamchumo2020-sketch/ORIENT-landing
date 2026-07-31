@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Контакты завода «ОРИЕНТ» во Владивостоке" 
+  description="Контакты производителя андезитных блоков и кварцевой брусчатки завода «ОРИЕНТ». Адрес самовывоза: г. Владивосток, ул. Гастелло, 1. Телефон: +7 (423) 255-18-18. Карта проезда."
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Заголовок страницы -->
+    <div class="border-b border-border-dark pb-8 mb-12">
+      <h1 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Контакты</h1>
+      <p class="mt-2 text-sm text-slate-400">
+        Свяжитесь с нами для расчета объемов, заказа доставки или согласования времени самовывоза.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <!-- Информация и реквизиты -->
+      <div>
+        <h2 class="text-xl font-bold text-white mb-6">Отдел продаж и производство</h2>
+        <div class="space-y-6 text-sm text-slate-300">
+          <div class="flex items-start gap-4">
+            <span class="text-accent text-lg">📍</span>
+            <div>
+              <p class="font-semibold text-white">Адрес производства и самовывоза:</p>
+              <p class="mt-1">г. Владивосток, ул. Гастелло, 1 (Раздольненский завод, Надеждинский район / площадка самовывоза)</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="text-accent text-lg">📞</span>
+            <div>
+              <p class="font-semibold text-white">Телефон:</p>
+              <p class="mt-1">
+                <a href="tel:+74232551818" class="hover:text-accent transition-colors">+7 (423) 255-18-18</a>
+              </p>
+              <p class="text-xs text-slate-500 mt-0.5">Звонки принимаются с 8:00 до 18:00 (пн-сб)</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="text-accent text-lg">✉️</span>
+            <div>
+              <p class="font-semibold text-white">Электронная почта:</p>
+              <p class="mt-1">
+                <a href="mailto:sales@orient-andezit.ru" class="hover:text-accent transition-colors">sales@orient-andezit.ru</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="text-accent text-lg">💼</span>
+            <div>
+              <p class="font-semibold text-white">Реквизиты компании:</p>
+              <p class="mt-1 leading-relaxed">
+                ООО «ОРИЕНТ»<br />
+                ИНН: 2521000000 / КПП: 252101001<br />
+                ОГРН: 1052500000000<br />
+                Юридический адрес: Приморский край, Надеждинский район, п. Раздольное
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Форма обратной связи (на Фазе 5 мы превратим ее в React-компонент с FormSubmit) -->
+      <div id="callback-form" class="rounded-2xl border border-border-dark bg-bg-card p-8 shadow-xl">
+        <h2 class="text-xl font-bold text-white mb-2">Оставить заявку</h2>
+        <p class="text-slate-400 text-xs mb-6">Заполните форму, и мы свяжемся с вами в течение 30 минут для расчета сметы.</p>
+
+        <!-- Пока просто разметка формы, AJAX будет подключен далее -->
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-xs font-semibold text-slate-400 mb-1.5">Ваше имя</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required 
+              placeholder="Иван"
+              class="w-full rounded-md border border-border-dark bg-slate-900/50 px-3 py-2 text-sm text-white placeholder-slate-600 focus:border-accent focus:outline-none transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="phone" class="block text-xs font-semibold text-slate-400 mb-1.5">Номер телефона</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              required 
+              placeholder="+7 (999) 000-00-00"
+              class="w-full rounded-md border border-border-dark bg-slate-900/50 px-3 py-2 text-sm text-white placeholder-slate-600 focus:border-accent focus:outline-none transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="block text-xs font-semibold text-slate-400 mb-1.5">Комментарий (какой объем блоков/брусчатки нужен)</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="3" 
+              placeholder="Интересует стеновой блок, примерно 40 куб. м. Нужна доставка в Артем."
+              class="w-full rounded-md border border-border-dark bg-slate-900/50 px-3 py-2 text-sm text-white placeholder-slate-600 focus:border-accent focus:outline-none transition-colors"
+            ></textarea>
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full inline-flex items-center justify-center rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover transition-colors"
+          >
+            Отправить заявку
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Интерактивная карта -->
+    <div class="mt-16 rounded-2xl border border-border-dark bg-bg-card p-2 shadow-xl overflow-hidden aspect-video max-h-[500px]">
+      <iframe 
+        src="https://yandex.ru/map-widget/v1/?ll=131.964523%2C43.204555&z=16&mode=search&text=Владивосток%2C%20улица%20Гастелло%2C%201" 
+        width="100%" 
+        height="100%" 
+        frameborder="0" 
+        allowfullscreen="true" 
+        style="position:relative;"
+        class="rounded-xl border border-border-dark"
+      ></iframe>
+    </div>
+  </div>
+</BaseLayout>

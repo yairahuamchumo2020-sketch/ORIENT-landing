@@ -1,0 +1,138 @@
+---
+interface Props {
+  activePage?: string;
+}
+
+const { activePage } = Astro.props;
+
+const menuItems = [
+  { name: 'Главная', href: '/' },
+  { name: 'Продукция', href: '/catalog' },
+  { name: 'О заводе', href: '/#about' },
+  { name: 'Объекты', href: '/#objects' },
+  { name: 'Калькулятор', href: '/#calculator' },
+  { name: 'FAQ', href: '/#faq' },
+  { name: 'Контакты', href: '/contacts' }
+];
+---
+
+<header id="main-header" class="header-pinned w-full bg-bg-dark border-b border-transparent transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 items-center justify-between">
+      <!-- Логотип -->
+      <div class="flex items-center gap-8">
+        <a href="/" class="flex items-center gap-2 group">
+          <span class="text-2xl font-black tracking-wider text-white group-hover:text-accent transition-colors">
+            ОРИЕНТ<span class="text-accent">.</span>
+          </span>
+        </a>
+
+        <!-- Десктопное меню -->
+        <nav class="hidden md:flex items-center gap-8">
+          {menuItems.map((item) => {
+            const isActive = activePage === item.name || 
+              (item.href === '/' && Astro.url.pathname === '/') ||
+              (item.href !== '/' && Astro.url.pathname.startsWith(item.href));
+            return (
+              <a 
+                href={item.href} 
+                class={`text-sm font-semibold tracking-wide transition-colors ${
+                  isActive 
+                    ? 'text-accent' 
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                {item.name}
+              </a>
+            );
+          })}
+        </nav>
+      </div>
+
+      <!-- Правая часть: Телефон и Кнопка -->
+      <div class="hidden sm:flex items-center gap-6">
+        <div class="flex flex-col items-end">
+          <a href="tel:+74232551818" class="text-sm font-bold text-white hover:text-accent transition-colors">
+            +7 (423) 255-18-18
+          </a>
+          <span class="text-[10px] text-slate-500">Отдел продаж (пн-сб)</span>
+        </div>
+        <a 
+          href="/contacts#callback-form" 
+          class="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] transition-all"
+        >
+          Заказать звонок
+        </a>
+      </div>
+
+      <!-- Кнопка мобильного меню -->
+      <div class="flex md:hidden">
+        <button 
+          type="button" 
+          id="mobile-menu-btn"
+          class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-800 hover:text-white focus:outline-none"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Открыть меню</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Мобильное меню -->
+  <div class="hidden md:hidden bg-bg-dark border-b border-border-dark" id="mobile-menu">
+    <div class="space-y-1 px-4 pb-4 pt-2">
+      {menuItems.map((item) => {
+        const isActive = activePage === item.name || 
+          (item.href === '/' && Astro.url.pathname === '/') ||
+          (item.href !== '/' && Astro.url.pathname.startsWith(item.href));
+        return (
+          <a 
+            href={item.href} 
+            class={`block rounded-md px-3 py-2 text-base font-semibold ${
+              isActive 
+                ? 'bg-accent/10 text-accent' 
+                : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+            }`}
+          >
+            {item.name}
+          </a>
+        );
+      })}
+      <div class="border-t border-border-dark pt-4 mt-4 pb-2">
+        <div class="flex items-center justify-between px-3">
+          <div>
+            <a href="tel:+74232551818" class="text-base font-bold text-white hover:text-accent transition-colors">
+              +7 (423) 255-18-18
+            </a>
+            <p class="text-[10px] text-slate-500">Отдел продаж, пн-сб 8:00 - 18:00</p>
+          </div>
+          <a 
+            href="/contacts#callback-form" 
+            class="rounded-md bg-accent px-4 py-2 text-xs font-bold text-white hover:bg-accent-hover transition-colors"
+          >
+            Заказать звонок
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Логика переключения мобильного меню
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>

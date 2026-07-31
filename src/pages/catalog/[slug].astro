@@ -1,0 +1,186 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Генерируем пути для всех товаров
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map(product => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const { Content } = await render(product);
+
+const { 
+  title, 
+  category, 
+  dimensions, 
+  strength, 
+  frostResistance, 
+  weight, 
+  thermalConductivity, 
+  description, 
+  seoTitle, 
+  seoDescription, 
+  image,
+  price 
+} = product.data;
+
+// Категории в читаемом виде
+const categoryLabels = {
+  blocks: 'Андезитные блоки',
+  paving: 'Кварцевая брусчатка',
+  curbs: 'Бордюрный камень'
+};
+
+// Динамическая микроразметка Schema.org Product
+const productSchema = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": title,
+  "image": `https://orient-andezit.ru${image}`,
+  "description": description,
+  "sku": product.id,
+  "category": categoryLabels[category],
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "RUB",
+    "price": "0", // 0 означает по запросу в контексте
+    "priceValuate": "По запросу",
+    "availability": "https://schema.org/InStock",
+    "url": Astro.url.href
+  }
+};
+---
+
+<BaseLayout 
+  title={seoTitle} 
+  description={seoDescription}
+  image={image}
+  productSchema={productSchema}
+  activePage="Продукция"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Хлебные крошки -->
+    <nav class="flex text-sm text-slate-400 mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="hover:text-white transition-colors">Главная</a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <span class="mx-2 text-slate-600">/</span>
+            <a href="/catalog" class="hover:text-white transition-colors">Продукция</a>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <span class="mx-2 text-slate-600">/</span>
+            <a href={`/catalog?category=${category}`} class="hover:text-white transition-colors">
+              {categoryLabels[category]}
+            </a>
+          </div>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <span class="mx-2 text-slate-600">/</span>
+            <span class="text-slate-200 truncate max-w-[200px] sm:max-w-none">{title}</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Основная сетка карточки -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+      <!-- Блок с изображением -->
+      <div class="aspect-square rounded-2xl bg-bg-card border border-border-dark flex items-center justify-center relative overflow-hidden shadow-xl">
+        <img 
+          src={image} 
+          alt={title} 
+          loading="lazy" 
+          class="object-cover w-full h-full"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
+        <span class="text-7xl block select-none absolute">🏗️</span>
+      </div>
+
+      <!-- Блок информации -->
+      <div class="flex flex-col justify-between">
+        <div>
+          <span class="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent ring-1 ring-inset ring-accent/20 mb-4">
+            {categoryLabels[category]}
+          </span>
+          <h1 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl mb-4">
+            {title}
+          </h1>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            {description}
+          </p>
+
+          <!-- Таблица характеристик -->
+          <h2 class="text-base font-bold text-white mb-3">Технические характеристики</h2>
+          <div class="border-t border-border-dark text-sm">
+            <dl class="divide-y divide-border-dark">
+              <div class="py-2.5 grid grid-cols-3 gap-4">
+                <dt class="text-slate-400 font-medium">Размеры (ДхШхВ)</dt>
+                <dd class="text-slate-200 col-span-2">{dimensions.length} × {dimensions.width} × {dimensions.height} мм</dd>
+              </div>
+              <div class="py-2.5 grid grid-cols-3 gap-4">
+                <dt class="text-slate-400 font-medium">Прочность</dt>
+                <dd class="text-slate-200 col-span-2">{strength}</dd>
+              </div>
+              <div class="py-2.5 grid grid-cols-3 gap-4">
+                <dt class="text-slate-400 font-medium">Морозостойкость</dt>
+                <dd class="text-slate-200 col-span-2">{frostResistance}</dd>
+              </div>
+              {weight && (
+                <div class="py-2.5 grid grid-cols-3 gap-4">
+                  <dt class="text-slate-400 font-medium">Вес изделия</dt>
+                  <dd class="text-slate-200 col-span-2">{weight} кг</dd>
+                </div>
+              )}
+              {thermalConductivity && (
+                <div class="py-2.5 grid grid-cols-3 gap-4">
+                  <dt class="text-slate-400 font-medium">Теплопроводность</dt>
+                  <dd class="text-slate-200 col-span-2">{thermalConductivity} Вт/(м·°C)</dd>
+                </div>
+              )}
+            </dl>
+          </div>
+        </div>
+
+        <div class="border-t border-border-dark pt-6 mt-8">
+          <div class="flex items-baseline gap-4 mb-6">
+            <span class="text-sm text-slate-400">Стоимость:</span>
+            <span class="text-3xl font-extrabold text-white">{price}</span>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a 
+              href="/contacts#callback-form" 
+              class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover transition-colors"
+            >
+              Заказать расчет объема
+            </a>
+            <a 
+              href="/catalog" 
+              class="inline-flex items-center justify-center rounded-md border border-border-dark bg-slate-900/50 px-6 py-3 text-sm font-semibold text-slate-200 shadow-sm hover:bg-slate-800 transition-colors"
+            >
+              Вернуться в каталог
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Текстовое описание товара (Markdown контент) -->
+    <div class="border-t border-border-dark pt-10">
+      <h2 class="text-xl font-bold text-white mb-6">Описание и сфера применения</h2>
+      <div class="prose prose-invert prose-orange max-w-none text-slate-300 text-sm leading-relaxed space-y-4">
+        <Content />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

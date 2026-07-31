@@ -1,0 +1,70 @@
+---
+const projects = [
+  {
+    title: 'Монолитно-каркасный жилой комплекс',
+    location: 'г. Владивосток',
+    desc: 'Поставка стенового самонесущего блока КСР-39 для заполнения проемов.',
+    volume: '2 400 куб. м'
+  },
+  {
+    title: 'Торгово-выставочный центр',
+    location: 'г. Артём',
+    desc: 'Вентиляционные блоки ВБ-3 и перегородочные блоки 120 мм.',
+    volume: '850 куб. м'
+  },
+  {
+    title: 'Благоустройство сквера и пешеходных зон',
+    location: 'г. Находка',
+    desc: 'Антискользящая кварцевая брусчатка «Кирпичик» и тротуарный бордюр БР 80.20.8.',
+    volume: '4 200 кв. м'
+  },
+  {
+    title: 'Жилой микрорайон монолитных домов',
+    location: 'г. Уссурийск',
+    desc: 'Полный комплекс поставок: стеновые, перегородочные и вентблоки.',
+    volume: '3 100 куб. м'
+  }
+];
+---
+
+<section id="objects" class="py-20 sm:py-24 bg-bg-dark border-b border-border-dark reveal">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+      <div class="max-w-2xl">
+        <span class="text-xs font-bold text-accent uppercase tracking-wider block mb-4">Наши объекты</span>
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Сотни объектов на Дальнем Востоке
+        </h2>
+        <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+          Завод «Ориент» производит и поставляет продукцию на крупнейшие жилые комплексы, медицинские учреждения, школы и торгово-административные центры Приморского края и Сахалина.
+        </p>
+      </div>
+      <a href="/catalog" class="mt-6 md:mt-0 inline-flex items-center justify-center rounded-md border border-border-dark bg-slate-900/50 px-5 py-2.5 text-xs font-bold text-slate-200 shadow-sm hover:bg-slate-800 transition-colors">
+        Посмотреть продукцию
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {projects.map((proj) => (
+        <article class="rounded-2xl border border-border-dark bg-bg-card/40 p-8 shadow-sm flex flex-col justify-between hover:border-slate-700/80 transition-colors group">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <span class="text-xs font-bold text-accent bg-accent/10 rounded-full px-3 py-1 uppercase tracking-wider">{proj.location}</span>
+              <span class="text-xs font-semibold text-slate-500">Объем: {proj.volume}</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors">
+              {proj.title}
+            </h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              {proj.desc}
+            </p>
+          </div>
+          <div class="mt-6 border-t border-slate-900 pt-4 flex items-center justify-between text-xs text-slate-500">
+            <span>Поставки собственным автотранспортом</span>
+            <span>Паспорт прочности ГОСТ</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

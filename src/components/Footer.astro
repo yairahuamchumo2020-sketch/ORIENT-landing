@@ -1,0 +1,71 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-border-dark bg-bg-dark py-16 text-slate-400">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <!-- Блок с описанием -->
+      <div class="md:col-span-2">
+        <span class="text-xl font-black tracking-wider text-white">
+          ОРИЕНТ<span class="text-accent">.</span>
+        </span>
+        <p class="mt-4 text-sm leading-relaxed max-w-md">
+          Раздольненский завод андезитных блоков (Надеждинский район, Приморский край). На строительном рынке с 2005 года. Производство качественных вибропрессованных стройматериалов по ГОСТ.
+        </p>
+        <div class="mt-6 text-xs text-slate-500 space-y-1">
+          <p>© {currentYear} ООО «Ориент». Все права защищены.</p>
+          <p>ИНН: 2521000000 / ОГРН: 1052500000000</p>
+        </div>
+      </div>
+
+      <!-- Блок навигации -->
+      <div>
+        <h3 class="text-sm font-bold tracking-wider text-white uppercase mb-4">Навигация</h3>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="/" class="hover:text-white transition-colors">Главная</a>
+          </li>
+          <li>
+            <a href="/catalog" class="hover:text-white transition-colors">Каталог товаров</a>
+          </li>
+          <li>
+            <a href="/contacts" class="hover:text-white transition-colors">Контакты</a>
+          </li>
+          <li>
+            <a href="/contacts#callback-form" class="hover:text-white transition-colors text-accent">Оставить заявку</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Блок контактов -->
+      <div>
+        <h3 class="text-sm font-bold tracking-wider text-white uppercase mb-4">Производство</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-2">
+            <span>📍</span>
+            <span>г. Владивосток, ул. Гастелло, 1 (Самовывоз)</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span>📞</span>
+            <a href="tel:+74232551818" class="hover:text-white transition-colors font-semibold text-slate-200">
+              +7 (423) 255-18-18
+            </a>
+          </li>
+          <li class="flex items-center gap-2">
+            <span>✉️</span>
+            <a href="mailto:sales@orient-andezit.ru" class="hover:text-white transition-colors">
+              sales@orient-andezit.ru
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Нижняя полоса -->
+    <div class="border-t border-border-dark pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>Продавец на Farpost более 18 лет.</p>
+      <p>Разработка и поддержка сайта завода «Ориент»</p>
+    </div>
+  </div>
+</footer>

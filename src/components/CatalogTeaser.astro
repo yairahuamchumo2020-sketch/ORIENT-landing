@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+
+const allProducts = await getCollection('products');
+// Выбираем 4 самых популярных товара для тизера
+const teaserSlugs = ['block-wall', 'block-partition-narrow', 'paving-brick', 'vent-vb1'];
+const teaserProducts = allProducts.filter(p => teaserSlugs.includes(p.id));
+---
+
+<section id="popular-products" class="py-20 sm:py-24 bg-slate-900/50 border-b border-border-dark scroll-mt-20 reveal">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <span class="text-xs font-bold text-accent uppercase tracking-wider block mb-4">Наш ассортимент</span>
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Популярная продукция завода
+        </h2>
+        <p class="mt-4 text-slate-400 text-sm max-w-2xl">
+          Производим качественные строительные материалы из экологически чистого вулканического сырья Приморья. Все изделия сертифицированы по ГОСТ.
+        </p>
+      </div>
+      <div class="mt-6 md:mt-0">
+        <a 
+          href="/catalog" 
+          class="inline-flex items-center gap-2 text-sm font-bold text-accent hover:text-white transition-colors group"
+        >
+          Смотреть весь каталог
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Сетка карточек товаров -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {teaserProducts.map((product) => (
+        <article class="flex flex-col overflow-hidden rounded-xl border border-border-dark bg-bg-card hover:border-accent/50 transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-0.5">
+          <div class="aspect-square bg-slate-900 flex items-center justify-center text-slate-600 relative overflow-hidden">
+            <!-- Изображение товара с ленивой загрузкой -->
+            <img 
+              src={product.data.image} 
+              alt={product.data.title} 
+              loading="lazy" 
+              class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <h3 class="text-base font-bold text-white group-hover:text-accent transition-colors mb-2 line-clamp-2">
+              <a href={`/catalog/${product.id}`}>{product.data.title}</a>
+            </h3>
+            <div class="space-y-1.5 text-[11px] text-slate-400 mb-6 flex-grow">
+              <div class="flex justify-between border-b border-slate-800/40 pb-1.5">
+                <span>Размеры:</span> 
+                <span class="font-semibold text-slate-200">
+                  {product.data.dimensions.length} × {product.data.dimensions.width} × {product.data.dimensions.height} мм
+                </span>
+              </div>
+              <div class="flex justify-between">
+                <span>Прочность:</span> 
+                <span class="font-semibold text-slate-200">{product.data.strength}</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between border-t border-border-dark pt-4">
+              <div>
+                <span class="text-[9px] text-slate-500 block uppercase tracking-wider">Цена</span>
+                <span class="text-sm font-extrabold text-white">{product.data.price}</span>
+              </div>
+              <a 
+                href={`/catalog/${product.id}`} 
+                class="inline-flex items-center justify-center rounded-md bg-slate-900 border border-border-dark px-3 py-1.5 text-xs font-bold text-white hover:bg-slate-800 hover:border-accent transition-colors"
+              >
+                Подробнее
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

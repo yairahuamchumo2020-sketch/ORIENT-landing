@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: var(--color-orange-500);
+  --color-accent-hover: var(--color-orange-600);
+  --color-bg-dark: #0b0f19;
+  --color-bg-card: #151d30;
+  --color-border-dark: #222f4c;
+}
+
+body {
+  background-color: #0b0f19;
+  color: #f8fafc;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222f4c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-orange-500);
+}
+
+/* Базовые классы для Headroom.js */
+.header-pinned {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Состояния, добавляемые Headroom.js */
+.headroom--pinned {
+  transform: translateY(0%);
+}
+
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+
+/* Изменение фона при скролле (когда шапка не на самом верху) */
+.headroom--not-top {
+  background-color: rgba(11, 15, 25, 0.9) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #222f4c;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+}
+
+.headroom--top {
+  background-color: transparent !important;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+}
+
+/* Анимации появления при прокрутке (Scroll Reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

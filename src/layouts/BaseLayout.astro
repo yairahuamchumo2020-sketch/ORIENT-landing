@@ -1,0 +1,162 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MessengerWidget from '../components/MessengerWidget.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  productSchema?: Record<string, any>;
+  activePage?: string;
+}
+
+const { 
+  title, 
+  description, 
+  image = '/images/og-default.jpg', 
+  productSchema,
+  activePage
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://orient-andezit.ru');
+
+// Базовая микроразметка LocalBusiness
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Завод «ОРИЕНТ»",
+  "image": "https://orient-andezit.ru/images/logo.png",
+  "@id": "https://orient-andezit.ru/#localbusiness",
+  "url": "https://orient-andezit.ru",
+  "telephone": "+7 (423) 255-18-18",
+  "email": "sales@orient-andezit.ru",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Гастелло, 1",
+    "addressLocality": "Владивосток",
+    "addressRegion": "Приморский край",
+    "postalCode": "690000",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.204555,
+    "longitude": 131.964523
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  }
+};
+---
+
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title} | Завод «ОРИЕНТ»</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | Завод «ОРИЕНТ»`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, canonicalURL)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${title} | Завод «ОРИЕНТ»`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org LocalBusiness JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+    <!-- Dynamic Schema.org Product JSON-LD (if provided) -->
+    {productSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    )}
+  </head>
+  <body class="min-h-screen flex flex-col bg-bg-dark text-slate-100 font-sans selection:bg-accent selection:text-white pt-20">
+    
+    <!-- Компонент шапки -->
+    <Header activePage={activePage} />
+
+    <!-- Основной контент страницы -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Компонент подвала -->
+    <Footer />
+
+    <!-- Плавающий виджет мессенджеров -->
+    <MessengerWidget />
+
+    <!-- Подключение библиотеки Headroom.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.12.0/headroom.min.js" is:inline></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Инициализация Headroom.js
+        const headerElement = document.getElementById("main-header");
+        if (headerElement) {
+          const headroom = new Headroom(headerElement, {
+            tolerance: 5,
+            offset: 80,
+            classes: {
+              initial: "headroom",
+              pinned: "headroom--pinned",
+              unpinned: "headroom--unpinned",
+              top: "headroom--top",
+              notTop: "headroom--not-top"
+            }
+          });
+          headroom.init();
+        }
+
+        // Инициализация Scroll Reveal (плавное появление)
+        const reveals = document.querySelectorAll(".reveal");
+        if (reveals.length > 0) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.05,
+            rootMargin: "0px 0px -40px 0px"
+          });
+          reveals.forEach(reveal => observer.observe(reveal));
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+
+> temp-astro@0.0.1 dev
+> astro dev --host
+
+{"message":"Dev server running at http://localhost:4321 (pid 17212)\n  Network:\n    http://198.18.0.1:4321/\n    http://172.20.10.5:4321/\n    http://172.25.128.1:4321/\n  Stop:   astro dev stop\n  Status: astro dev status\n  Logs:   astro dev logs","label":"SKIP_FORMAT","level":"info"}
