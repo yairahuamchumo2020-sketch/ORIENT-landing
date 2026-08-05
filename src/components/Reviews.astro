@@ -24,24 +24,23 @@ const reviews = [
 ];
 ---
 
-<section id="reviews" class="py-20 sm:py-24 bg-slate-900/50 border-b border-border-dark scroll-mt-20 reveal">
+<!-- Тонкий оранжевый разделитель -->
+<div class="h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" aria-hidden="true"></div>
+
+<section id="reviews" class="py-24 sm:py-32 bg-bg-dark border-b border-border-dark scroll-mt-20 reveal">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class="text-xs font-bold text-accent uppercase tracking-wider block mb-4">Отзывы клиентов</span>
-      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-        Что говорят о нашей продукции
+    <div class="max-w-3xl mb-16 text-left">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#F2EFE9] leading-tight">
+        Отзывы
       </h2>
-      <p class="mt-4 text-slate-400 text-sm">
-        Нам доверяют как частные застройщики, так и крупные строительные компании Приморского края.
-      </p>
     </div>
 
     <!-- Сетка отзывов -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {reviews.map((review) => (
-        <div class="flex flex-col justify-between rounded-xl border border-border-dark bg-bg-card/50 p-6 sm:p-8 shadow-sm hover:border-slate-800 transition-all duration-300 relative group">
+        <div class="flex flex-col justify-between rounded-xl border border-border-dark bg-bg-card p-6 sm:p-8 shadow-sm hover:border-[#A8A29B] transition-all duration-300 relative group">
           <!-- Иконка кавычек на фоне -->
-          <span class="absolute top-6 right-8 text-6xl text-slate-800/20 font-serif select-none pointer-events-none group-hover:text-accent/10 transition-colors">“</span>
+          <span class="absolute top-6 right-8 text-6xl text-slate-700/30 font-serif select-none pointer-events-none group-hover:text-accent/20 transition-colors">"</span>
           
           <div>
             <!-- Звезды -->
@@ -51,17 +50,17 @@ const reviews = [
               ))}
             </div>
             
-            <p class="text-slate-300 text-sm leading-relaxed italic mb-6">
+            <p class="text-[#A8A29B] text-sm leading-relaxed italic mb-6">
               «{review.text}»
             </p>
           </div>
 
-          <div class="border-t border-slate-800/60 pt-4 flex items-center justify-between">
+          <div class="border-t border-[#2F3540] pt-4 flex items-center justify-between">
             <div>
-              <span class="font-bold text-white text-sm block">{review.name}</span>
-              <span class="text-[11px] text-slate-500 block mt-0.5">{review.location}</span>
+              <span class="font-extrabold text-[#F2EFE9] text-sm block">{review.name}</span>
+              <span class="text-[11px] text-[#A8A29B]/60 block mt-0.5 font-medium">{review.location}</span>
             </div>
-            <span class="text-[10px] text-slate-600 font-medium">{review.date}</span>
+            <span class="text-[10px] text-[#A8A29B]/60 font-bold">{review.date}</span>
           </div>
         </div>
       ))}

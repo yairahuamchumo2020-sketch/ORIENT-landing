@@ -1,6 +1,6 @@
 ---
 title: "Вентиляционный блок ВБ-5 (1480x300x180)"
-category: "blocks"
+category: "ventilation"
 price: "По запросу"
 dimensions:
   length: 1480

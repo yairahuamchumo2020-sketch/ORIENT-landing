@@ -1,6 +1,6 @@
 ---
 title: "Вентиляционный блок ВБ-4 (1380x300x180)"
-category: "blocks"
+category: "ventilation"
 price: "По запросу"
 dimensions:
   length: 1380

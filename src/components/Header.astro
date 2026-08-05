@@ -20,62 +20,67 @@ const menuItems = [
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-20 items-center justify-between">
       <!-- Логотип -->
-      <div class="flex items-center gap-8">
-        <a href="/" class="flex items-center gap-2 group">
-          <span class="text-2xl font-black tracking-wider text-white group-hover:text-accent transition-colors">
-            ОРИЕНТ<span class="text-accent">.</span>
-          </span>
-        </a>
-
-        <!-- Десктопное меню -->
-        <nav class="hidden md:flex items-center gap-8">
-          {menuItems.map((item) => {
-            const isActive = activePage === item.name || 
-              (item.href === '/' && Astro.url.pathname === '/') ||
-              (item.href !== '/' && Astro.url.pathname.startsWith(item.href));
-            return (
-              <a 
-                href={item.href} 
-                class={`text-sm font-semibold tracking-wide transition-colors ${
-                  isActive 
-                    ? 'text-accent' 
-                    : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                {item.name}
-              </a>
-            );
-          })}
-        </nav>
-      </div>
-
-      <!-- Правая часть: Телефон и Кнопка -->
-      <div class="hidden sm:flex items-center gap-6">
-        <div class="flex flex-col items-end">
-          <a href="tel:+74232551818" class="text-sm font-bold text-white hover:text-accent transition-colors">
-            +7 (423) 255-18-18
-          </a>
-          <span class="text-[10px] text-slate-500">Отдел продаж (пн-сб)</span>
+      <a href="/" class="flex items-center group shrink-0 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-md transition-shadow">
+        <div class="flex items-center gap-3">
+          <svg class="h-9 w-9 text-[#F2EFE9] group-hover:text-accent transition-colors" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+            <!-- Шестиугольник -->
+            <polygon points="50,5 95,28 95,72 50,95 5,72 5,28" fill="none" stroke="currentColor" stroke-width="8"/>
+            <!-- Внутренняя буква А в виде минималистичной стрелки/арки -->
+            <path d="M50 22 L26 70 L38 70 L46 52 L54 52 L62 70 L74 70 Z M50 36 L52 44 L48 44 Z" fill="currentColor"/>
+          </svg>
+          <div class="flex flex-col">
+            <span class="text-lg font-black tracking-tight text-[#F2EFE9] leading-none group-hover:text-accent transition-colors">
+              ОРИЕНТ
+            </span>
+            <span class="text-[9px] font-bold text-[#D9A566] tracking-widest mt-1">
+              СТРОИМ НАДЁЖНО
+            </span>
+          </div>
         </div>
-        <a 
-          href="/contacts#callback-form" 
-          class="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] transition-all"
-        >
-          Заказать звонок
+      </a>
+
+      <!-- Десктопное меню (центрированное) -->
+      <nav class="hidden lg:flex items-center justify-center gap-4 xl:gap-6 flex-grow mx-8">
+        {menuItems.map((item) => {
+          const isActive = activePage === item.name || 
+            (item.href === '/' && Astro.url.pathname === '/') ||
+            (item.href !== '/' && Astro.url.pathname.startsWith(item.href));
+          return (
+            <a 
+              href={item.href} 
+              class={`text-xs xl:text-sm font-extrabold tracking-wide transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1.5 py-0.5 ${
+                isActive 
+                  ? 'text-accent' 
+                  : 'text-[#A8A29B] hover:text-[#F2EFE9]'
+              }`}
+            >
+              {item.name}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- Правая часть: Телефон -->
+      <div class="hidden sm:flex items-center gap-2 shrink-0">
+        <svg class="h-4 w-4 text-[#D9A566]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <a href="tel:88005554210" class="text-sm font-extrabold text-[#F2EFE9] hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-md px-1.5 py-0.5">
+          8 (800) 555-42-10
         </a>
       </div>
 
       <!-- Кнопка мобильного меню -->
-      <div class="flex md:hidden">
+      <div class="flex lg:hidden shrink-0">
         <button 
           type="button" 
           id="mobile-menu-btn"
-          class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-800 hover:text-white focus:outline-none"
+          class="inline-flex items-center justify-center rounded-md p-2 text-[#A8A29B] hover:bg-slate-800/80 hover:text-[#F2EFE9] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
           <span class="sr-only">Открыть меню</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </button>
@@ -84,7 +89,7 @@ const menuItems = [
   </div>
 
   <!-- Мобильное меню -->
-  <div class="hidden md:hidden bg-bg-dark border-b border-border-dark" id="mobile-menu">
+  <div class="hidden lg:hidden bg-bg-dark border-b border-border-dark" id="mobile-menu">
     <div class="space-y-1 px-4 pb-4 pt-2">
       {menuItems.map((item) => {
         const isActive = activePage === item.name || 
@@ -93,10 +98,10 @@ const menuItems = [
         return (
           <a 
             href={item.href} 
-            class={`block rounded-md px-3 py-2 text-base font-semibold ${
+            class={`block rounded-md px-3 py-2 text-sm font-bold focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none ${
               isActive 
                 ? 'bg-accent/10 text-accent' 
-                : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                : 'text-[#A8A29B] hover:bg-slate-800/80 hover:text-[#F2EFE9]'
             }`}
           >
             {item.name}
@@ -104,18 +109,12 @@ const menuItems = [
         );
       })}
       <div class="border-t border-border-dark pt-4 mt-4 pb-2">
-        <div class="flex items-center justify-between px-3">
-          <div>
-            <a href="tel:+74232551818" class="text-base font-bold text-white hover:text-accent transition-colors">
-              +7 (423) 255-18-18
-            </a>
-            <p class="text-[10px] text-slate-500">Отдел продаж, пн-сб 8:00 - 18:00</p>
-          </div>
-          <a 
-            href="/contacts#callback-form" 
-            class="rounded-md bg-accent px-4 py-2 text-xs font-bold text-white hover:bg-accent-hover transition-colors"
-          >
-            Заказать звонок
+        <div class="flex items-center gap-2 px-3">
+          <svg class="h-4 w-4 text-[#D9A566]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a href="tel:88005554210" class="text-sm font-bold text-[#F2EFE9] hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-md px-1.5 py-0.5">
+            8 (800) 555-42-10
           </a>
         </div>
       </div>

@@ -1,16 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: var(--color-orange-500);
-  --color-accent-hover: var(--color-orange-600);
-  --color-bg-dark: #0b0f19;
-  --color-bg-card: #151d30;
-  --color-border-dark: #222f4c;
+  --color-accent: #C9622D; /* Насыщенный терракотовый */
+  --color-accent-hover: #A74116; /* Темно-терракотовый */
+  --color-secondary-accent: #D9A566; /* Светло-песочный/золотой для иконок */
+  --color-bg-dark: #1A1D21; /* Основной тёмный фон */
+  --color-bg-card: #23272E; /* Вторичный тёмный фон */
+  --color-border-dark: #2F3540; /* Тонкие тёмно-серые границы */
+  --color-bg-light: #F5F5F0;       /* Тёплый светло-серый для светлых секций */
+  --color-bg-light-alt: #EEEDE8;   /* Чуть темнее — для чередования секций */
+  --color-text-dark: #1A1D21;      /* Тёмный текст на светлом фоне */
+  --color-text-muted-dark: #4A4540; /* Приглушённый текст на светлом фоне */
 }
 
 body {
-  background-color: #0b0f19;
-  color: #f8fafc;
+  background-color: #1A1D21;
+  color: #F2EFE9;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -21,16 +26,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0f19;
+  background: #1A1D21;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222f4c;
+  background: #23272E;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-orange-500);
+  background: #C9622D;
 }
 
 /* Базовые классы для Headroom.js */
@@ -55,9 +60,9 @@ body {
 
 /* Изменение фона при скролле (когда шапка не на самом верху) */
 .headroom--not-top {
-  background-color: rgba(11, 15, 25, 0.9) !important;
+  background-color: rgba(26, 29, 33, 0.95) !important;
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid #222f4c;
+  border-bottom: 1px solid #2F3540;
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
 }
 

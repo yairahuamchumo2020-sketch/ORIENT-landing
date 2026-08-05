@@ -5,7 +5,7 @@ const products = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx,json}', base: "./src/content/products" }),
   schema: z.object({
     title: z.string(),
-    category: z.enum(['blocks', 'paving', 'curbs']),
+    category: z.enum(['wall', 'partition', 'ventilation', 'paving', 'curb']),
     price: z.string().default('По запросу'),
     dimensions: z.object({
       length: z.number(), // длина в мм

@@ -1,6 +1,6 @@
 ---
 title: "Перегородочный блок широкий КПР-ПР-ПС-39 (120 мм)"
-category: "blocks"
+category: "partition"
 price: "По запросу"
 dimensions:
   length: 390

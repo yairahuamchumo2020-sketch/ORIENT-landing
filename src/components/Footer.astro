@@ -2,18 +2,18 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-border-dark bg-bg-dark py-16 text-slate-400">
+<footer class="border-t border-border-dark bg-bg-dark py-16 text-[#A8A29B]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
       <!-- Блок с описанием -->
       <div class="md:col-span-2">
-        <span class="text-xl font-black tracking-wider text-white">
-          ОРИЕНТ<span class="text-accent">.</span>
+        <span class="text-xl font-black tracking-wider text-[#F2EFE9]">
+          АНДЕЗИТ<span class="text-accent">.</span>
         </span>
         <p class="mt-4 text-sm leading-relaxed max-w-md">
           Раздольненский завод андезитных блоков (Надеждинский район, Приморский край). На строительном рынке с 2005 года. Производство качественных вибропрессованных стройматериалов по ГОСТ.
         </p>
-        <div class="mt-6 text-xs text-slate-500 space-y-1">
+        <div class="mt-6 text-xs text-[#A8A29B]/60 space-y-1 font-medium">
           <p>© {currentYear} ООО «Ориент». Все права защищены.</p>
           <p>ИНН: 2521000000 / ОГРН: 1052500000000</p>
         </div>
@@ -21,40 +21,52 @@ const currentYear = new Date().getFullYear();
 
       <!-- Блок навигации -->
       <div>
-        <h3 class="text-sm font-bold tracking-wider text-white uppercase mb-4">Навигация</h3>
-        <ul class="space-y-3 text-sm">
+        <h3 class="text-sm font-extrabold tracking-wider text-[#F2EFE9] uppercase mb-4">Навигация</h3>
+        <ul class="space-y-3 text-sm font-semibold">
           <li>
-            <a href="/" class="hover:text-white transition-colors">Главная</a>
+            <a href="/" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Главная</a>
           </li>
           <li>
-            <a href="/catalog" class="hover:text-white transition-colors">Каталог товаров</a>
+            <a href="/catalog" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Продукция</a>
           </li>
           <li>
-            <a href="/contacts" class="hover:text-white transition-colors">Контакты</a>
+            <a href="/#about" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">О заводе</a>
           </li>
           <li>
-            <a href="/contacts#callback-form" class="hover:text-white transition-colors text-accent">Оставить заявку</a>
+            <a href="/#objects" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Наши объекты</a>
+          </li>
+          <li>
+            <a href="/#reviews" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Отзывы</a>
+          </li>
+          <li>
+            <a href="/#calculator" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Калькулятор</a>
+          </li>
+          <li>
+            <a href="/#faq" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">FAQ</a>
+          </li>
+          <li>
+            <a href="/contacts" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Контакты</a>
           </li>
         </ul>
       </div>
 
       <!-- Блок контактов -->
       <div>
-        <h3 class="text-sm font-bold tracking-wider text-white uppercase mb-4">Производство</h3>
-        <ul class="space-y-3 text-sm">
+        <h3 class="text-sm font-extrabold tracking-wider text-[#F2EFE9] uppercase mb-4">Производство</h3>
+        <ul class="space-y-3 text-sm font-medium">
           <li class="flex items-start gap-2">
-            <span>📍</span>
+            <span aria-hidden="true">📍</span>
             <span>г. Владивосток, ул. Гастелло, 1 (Самовывоз)</span>
           </li>
           <li class="flex items-center gap-2">
-            <span>📞</span>
-            <a href="tel:+74232551818" class="hover:text-white transition-colors font-semibold text-slate-200">
+            <span aria-hidden="true">📞</span>
+            <a href="tel:+74232551818" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors font-bold text-[#F2EFE9]">
               +7 (423) 255-18-18
             </a>
           </li>
           <li class="flex items-center gap-2">
-            <span>✉️</span>
-            <a href="mailto:sales@orient-andezit.ru" class="hover:text-white transition-colors">
+            <span aria-hidden="true">✉️</span>
+            <a href="mailto:sales@orient-andezit.ru" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors font-semibold">
               sales@orient-andezit.ru
             </a>
           </li>
@@ -63,7 +75,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <!-- Нижняя полоса -->
-    <div class="border-t border-border-dark pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+    <div class="border-t border-[#2F3540] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A8A29B]/60 font-medium">
       <p>Продавец на Farpost более 18 лет.</p>
       <p>Разработка и поддержка сайта завода «Ориент»</p>
     </div>

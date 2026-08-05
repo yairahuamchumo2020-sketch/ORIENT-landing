@@ -10,5 +10,7 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  site: 'https://yairahuamchumo2020-sketch.github.io',
+  base: '/ORIENT-landing'
 });

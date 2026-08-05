@@ -1,6 +1,6 @@
 ---
 title: "Вентиляционный блок ВБ-2 (910x300x180)"
-category: "blocks"
+category: "ventilation"
 price: "По запросу"
 dimensions:
   length: 910

@@ -31,9 +31,11 @@ const {
 
 // Категории в читаемом виде
 const categoryLabels = {
-  blocks: 'Андезитные блоки',
-  paving: 'Кварцевая брусчатка',
-  curbs: 'Бордюрный камень'
+  wall: 'Блок стеновой',
+  partition: 'Блок перегородочный',
+  ventilation: 'Блок вентиляционный',
+  paving: 'Брусчатка',
+  curb: 'Бордюрный камень'
 };
 
 // Динамическая микроразметка Schema.org Product
@@ -65,21 +67,21 @@ const productSchema = {
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
     <!-- Хлебные крошки -->
-    <nav class="flex text-sm text-slate-400 mb-8" aria-label="Breadcrumb">
+    <nav class="flex text-sm text-[#A8A29B] mb-8 font-semibold" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
-          <a href="/" class="hover:text-white transition-colors">Главная</a>
+          <a href="/" class="hover:text-[#F2EFE9] transition-colors">Главная</a>
         </li>
         <li>
           <div class="flex items-center">
             <span class="mx-2 text-slate-600">/</span>
-            <a href="/catalog" class="hover:text-white transition-colors">Продукция</a>
+            <a href="/catalog" class="hover:text-[#F2EFE9] transition-colors">Продукция</a>
           </div>
         </li>
         <li>
           <div class="flex items-center">
             <span class="mx-2 text-slate-600">/</span>
-            <a href={`/catalog?category=${category}`} class="hover:text-white transition-colors">
+            <a href={`/catalog?category=${category}`} class="hover:text-[#F2EFE9] transition-colors">
               {categoryLabels[category]}
             </a>
           </div>
@@ -87,7 +89,7 @@ const productSchema = {
         <li aria-current="page">
           <div class="flex items-center">
             <span class="mx-2 text-slate-600">/</span>
-            <span class="text-slate-200 truncate max-w-[200px] sm:max-w-none">{title}</span>
+            <span class="text-[#F2EFE9] truncate max-w-[200px] sm:max-w-none">{title}</span>
           </div>
         </li>
       </ol>
@@ -96,7 +98,7 @@ const productSchema = {
     <!-- Основная сетка карточки -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
       <!-- Блок с изображением -->
-      <div class="aspect-square rounded-2xl bg-bg-card border border-border-dark flex items-center justify-center relative overflow-hidden shadow-xl">
+      <div class="aspect-square rounded-2xl bg-slate-800/40 border border-border-dark flex items-center justify-center relative overflow-hidden shadow-sm">
         <img 
           src={image} 
           alt={title} 
@@ -110,63 +112,63 @@ const productSchema = {
       <!-- Блок информации -->
       <div class="flex flex-col justify-between">
         <div>
-          <span class="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent ring-1 ring-inset ring-accent/20 mb-4">
+          <span class="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-bold text-accent ring-1 ring-inset ring-accent/20 mb-4 uppercase tracking-wider">
             {categoryLabels[category]}
           </span>
-          <h1 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl mb-4">
+          <h1 class="text-3xl font-extrabold tracking-tight text-[#F2EFE9] sm:text-4xl mb-4">
             {title}
           </h1>
-          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+          <p class="text-[#A8A29B] text-sm leading-relaxed mb-6 font-medium">
             {description}
           </p>
 
           <!-- Таблица характеристик -->
-          <h2 class="text-base font-bold text-white mb-3">Технические характеристики</h2>
-          <div class="border-t border-border-dark text-sm">
-            <dl class="divide-y divide-border-dark">
+          <h2 class="text-base font-extrabold text-[#F2EFE9] mb-3">Технические характеристики</h2>
+          <div class="border-t border-[#2F3540] text-sm">
+            <dl class="divide-y divide-[#2F3540]">
               <div class="py-2.5 grid grid-cols-3 gap-4">
-                <dt class="text-slate-400 font-medium">Размеры (ДхШхВ)</dt>
-                <dd class="text-slate-200 col-span-2">{dimensions.length} × {dimensions.width} × {dimensions.height} мм</dd>
+                <dt class="text-[#A8A29B] font-medium">Размеры (ДхШхВ)</dt>
+                <dd class="text-[#F2EFE9] font-bold col-span-2">{dimensions.length} × {dimensions.width} × {dimensions.height} мм</dd>
               </div>
               <div class="py-2.5 grid grid-cols-3 gap-4">
-                <dt class="text-slate-400 font-medium">Прочность</dt>
-                <dd class="text-slate-200 col-span-2">{strength}</dd>
+                <dt class="text-[#A8A29B] font-medium">Прочность</dt>
+                <dd class="text-[#F2EFE9] font-bold col-span-2">{strength}</dd>
               </div>
               <div class="py-2.5 grid grid-cols-3 gap-4">
-                <dt class="text-slate-400 font-medium">Морозостойкость</dt>
-                <dd class="text-slate-200 col-span-2">{frostResistance}</dd>
+                <dt class="text-[#A8A29B] font-medium">Морозостойкость</dt>
+                <dd class="text-[#F2EFE9] font-bold col-span-2">{frostResistance}</dd>
               </div>
               {weight && (
                 <div class="py-2.5 grid grid-cols-3 gap-4">
-                  <dt class="text-slate-400 font-medium">Вес изделия</dt>
-                  <dd class="text-slate-200 col-span-2">{weight} кг</dd>
+                  <dt class="text-[#A8A29B] font-medium">Вес изделия</dt>
+                  <dd class="text-[#F2EFE9] font-bold col-span-2">{weight} кг</dd>
                 </div>
               )}
               {thermalConductivity && (
                 <div class="py-2.5 grid grid-cols-3 gap-4">
-                  <dt class="text-slate-400 font-medium">Теплопроводность</dt>
-                  <dd class="text-slate-200 col-span-2">{thermalConductivity} Вт/(м·°C)</dd>
+                  <dt class="text-[#A8A29B] font-medium">Теплопроводность</dt>
+                  <dd class="text-[#F2EFE9] font-bold col-span-2">{thermalConductivity} Вт/(м·°C)</dd>
                 </div>
               )}
             </dl>
           </div>
         </div>
 
-        <div class="border-t border-border-dark pt-6 mt-8">
+        <div class="border-t border-[#2F3540] pt-6 mt-8">
           <div class="flex items-baseline gap-4 mb-6">
-            <span class="text-sm text-slate-400">Стоимость:</span>
-            <span class="text-3xl font-extrabold text-white">{price}</span>
+            <span class="text-sm text-[#A8A29B] font-medium">Стоимость:</span>
+            <span class="text-3xl font-black text-[#F2EFE9]">{price}</span>
           </div>
           <div class="flex flex-wrap gap-4">
             <a 
-              href="/contacts#callback-form" 
-              class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover transition-colors"
+              href="/contacts" 
+              class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-accent-hover transition-colors"
             >
               Заказать расчет объема
             </a>
             <a 
               href="/catalog" 
-              class="inline-flex items-center justify-center rounded-md border border-border-dark bg-slate-900/50 px-6 py-3 text-sm font-semibold text-slate-200 shadow-sm hover:bg-slate-800 transition-colors"
+              class="inline-flex items-center justify-center rounded-md border border-[#2F3540] bg-bg-card px-6 py-3 text-sm font-bold text-[#F2EFE9] shadow-sm hover:bg-bg-dark hover:border-accent transition-colors"
             >
               Вернуться в каталог
             </a>
@@ -176,9 +178,9 @@ const productSchema = {
     </div>
 
     <!-- Текстовое описание товара (Markdown контент) -->
-    <div class="border-t border-border-dark pt-10">
-      <h2 class="text-xl font-bold text-white mb-6">Описание и сфера применения</h2>
-      <div class="prose prose-invert prose-orange max-w-none text-slate-300 text-sm leading-relaxed space-y-4">
+    <div class="border-t border-[#2F3540] pt-10">
+      <h2 class="text-xl font-extrabold text-[#F2EFE9] mb-6">Описание и сфера применения</h2>
+      <div class="prose prose-invert prose-stone prose-orange max-w-none text-[#A8A29B] text-sm leading-relaxed space-y-4">
         <Content />
       </div>
     </div>

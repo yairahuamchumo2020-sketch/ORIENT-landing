@@ -6,7 +6,7 @@ const faqs = [
   },
   {
     q: 'Где осуществляется самовывоз и в какое время?',
-    a: 'Самовывоз осуществляется с нашей складской площадки по адресу: г. Владивосток, ул. Гастелло, 1. Мы работаем с понедельника по субботу с 08:00 до 18:00. Просьба предварительно согласовать время приезда с вашим менеджером для ускорения процесса отгрузки.'
+    a: 'Самовывоз осуществляется непосредственно с завода по адресу: Приморский край, Надеждинский район, пос. Раздольное, ул. Гастелло, 25. Мы работаем с понедельника по субботу с 08:00 до 18:00. Просьба предварительно согласовать время приезда с вашим менеджером для ускорения процесса отгрузки.'
   },
   {
     q: 'Что означает «паспортная прочность набирается через 28 дней»?',
@@ -23,30 +23,29 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="py-20 sm:py-24 bg-bg-dark reveal">
+<!-- Тонкий оранжевый разделитель -->
+<div class="h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" aria-hidden="true"></div>
+
+<section id="faq" class="py-24 sm:py-32 bg-bg-dark border-b border-border-dark scroll-mt-20 reveal">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class="text-xs font-bold text-accent uppercase tracking-wider block mb-4">Часто задаваемые вопросы</span>
-      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <div class="max-w-3xl mb-16 text-left">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#F2EFE9] leading-tight">
         Вопросы и ответы
       </h2>
-      <p class="mt-4 text-slate-400 text-sm">
-        Ответы на самые популярные вопросы о логистике, прочности блоков и условиях сотрудничества с заводом.
-      </p>
     </div>
 
-    <div class="max-w-3xl mx-auto space-y-4">
+    <div class="max-w-3xl space-y-4">
       {faqs.map((faq) => (
-        <details class="group rounded-xl border border-border-dark bg-bg-card p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer select-none">
-          <summary class="flex items-center justify-between gap-4 text-white">
-            <h3 class="text-sm sm:text-base font-bold group-hover:text-accent transition-colors">
+        <details class="group rounded-xl border border-border-dark bg-bg-card p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer select-none shadow-sm hover:border-[#A8A29B] transition-colors">
+          <summary class="flex items-center justify-between gap-4 text-[#F2EFE9]">
+            <h3 class="text-sm sm:text-base font-extrabold group-hover:text-accent transition-colors">
               {faq.q}
             </h3>
-            <span class="transition-transform duration-300 group-open:-rotate-180 text-accent font-bold text-lg">
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-accent font-black text-lg">
               ↓
             </span>
           </summary>
-          <div class="mt-4 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-4">
+          <div class="mt-4 text-xs sm:text-sm text-[#A8A29B] leading-relaxed border-t border-[#2F3540] pt-4 font-medium">
             <p>{faq.a}</p>
           </div>
         </details>

@@ -1,6 +1,6 @@
 ---
 title: "Перегородочный блок узкий КПР-ПР-ПС-39 (90 мм)"
-category: "blocks"
+category: "partition"
 price: "По запросу"
 dimensions:
   length: 390

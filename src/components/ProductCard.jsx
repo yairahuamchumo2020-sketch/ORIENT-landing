@@ -1,7 +1,7 @@
 export default function ProductCard({ id, title, dimensions, strength, price, image }) {
   return (
     <article className="flex flex-col overflow-hidden rounded-xl border border-border-dark bg-bg-card hover:border-accent/50 transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-0.5">
-      <div className="aspect-square bg-slate-900 flex items-center justify-center text-slate-600 relative overflow-hidden">
+      <div className="aspect-square bg-slate-800/40 flex items-center justify-center text-slate-400 relative overflow-hidden">
         {/* Изображение товара с ленивой загрузкой */}
         <img 
           src={image} 
@@ -16,27 +16,27 @@ export default function ProductCard({ id, title, dimensions, strength, price, im
         <span className="text-4xl block group-hover:scale-110 transition-transform duration-500 select-none absolute hidden">🏗️</span>
       </div>
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-lg font-bold text-white group-hover:text-accent transition-colors mb-2 line-clamp-2">
+        <h3 className="text-base font-extrabold text-[#F2EFE9] group-hover:text-accent transition-colors mb-2 line-clamp-2">
           <a href={`/catalog/${id}`}>{title}</a>
         </h3>
-        <div className="space-y-1.5 text-xs text-slate-400 mb-6 flex-grow">
-          <div className="flex justify-between border-b border-slate-800/40 pb-1.5">
+        <div className="space-y-1.5 text-xs text-[#A8A29B] mb-6 flex-grow">
+          <div className="flex justify-between border-b border-[#2F3540] pb-1.5">
             <span>Размеры:</span> 
-            <span className="font-semibold text-slate-200">{dimensions.length} × {dimensions.width} × {dimensions.height} мм</span>
+            <span className="font-bold text-[#F2EFE9]">{dimensions.length} × {dimensions.width} × {dimensions.height} мм</span>
           </div>
           <div className="flex justify-between">
             <span>Прочность:</span> 
-            <span className="font-semibold text-slate-200">{strength}</span>
+            <span class="font-bold text-[#F2EFE9]">{strength}</span>
           </div>
         </div>
-        <div className="flex items-center justify-between border-t border-border-dark pt-4">
+        <div className="flex items-center justify-between border-t border-[#2F3540] pt-4">
           <div>
-            <span className="text-[10px] text-slate-500 block uppercase tracking-wider">Цена</span>
-            <span className="text-base font-extrabold text-white">{price}</span>
+            <span className="text-[10px] text-[#A8A29B]/60 block uppercase tracking-wider font-semibold">Цена</span>
+            <span className="text-base font-black text-[#F2EFE9]">{price}</span>
           </div>
           <a 
             href={`/catalog/${id}`} 
-            className="inline-flex items-center justify-center rounded-md bg-slate-900 border border-border-dark px-3 py-1.5 text-xs font-bold text-white hover:bg-slate-800 hover:border-accent transition-colors"
+            className="inline-flex items-center justify-center rounded-md bg-[#1A1D21] border border-[#2F3540] px-3 py-1.5 text-xs font-bold text-[#F2EFE9] hover:bg-[#23272E] hover:border-accent transition-colors shadow-sm"
           >
             Подробнее
           </a>

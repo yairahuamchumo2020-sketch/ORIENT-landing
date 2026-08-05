@@ -1,6 +1,6 @@
 ---
 title: "Стеновой андезитобазальтовый блок КСР-ПР-ПС-39"
-category: "blocks"
+category: "wall"
 price: "По запросу"
 dimensions:
   length: 390

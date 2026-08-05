@@ -1,6 +1,6 @@
 ---
 title: "Вентиляционный блок ВБ-1 (840x300x180)"
-category: "blocks"
+category: "ventilation"
 price: "По запросу"
 dimensions:
   length: 840

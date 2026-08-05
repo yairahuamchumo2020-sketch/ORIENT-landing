@@ -1,6 +1,6 @@
 ---
 title: "Тротуарный бордюрный камень БР 80.20.8"
-category: "curbs"
+category: "curb"
 price: "По запросу"
 dimensions:
   length: 800
