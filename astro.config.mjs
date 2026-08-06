@@ -12,5 +12,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://yairahuamchumo2020-sketch.github.io',
-  base: '/ORIENT-landing'
+  base: '/ORIENT-landing/'
 });
