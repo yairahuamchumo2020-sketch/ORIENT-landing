@@ -1,10 +1,17 @@
+const baseUrl = import.meta.env.BASE_URL;
+const getUrl = (path) => {
+  if (!path) return '';
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${baseUrl}${cleanPath}`;
+};
+
 export default function ProductCard({ id, title, dimensions, strength, price, image }) {
   return (
     <article className="flex flex-col overflow-hidden rounded-xl border border-border-dark bg-bg-card hover:border-accent/50 transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-0.5">
       <div className="aspect-square bg-slate-800/40 flex items-center justify-center text-slate-400 relative overflow-hidden">
         {/* Изображение товара с ленивой загрузкой */}
         <img 
-          src={image} 
+          src={getUrl(image)} 
           alt={title} 
           loading="lazy" 
           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
@@ -17,7 +24,7 @@ export default function ProductCard({ id, title, dimensions, strength, price, im
       </div>
       <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-base font-extrabold text-[#F2EFE9] group-hover:text-accent transition-colors mb-2 line-clamp-2">
-          <a href={`/catalog/${id}`}>{title}</a>
+          <a href={getUrl(`catalog/${id}`)}>{title}</a>
         </h3>
         <div className="space-y-1.5 text-xs text-[#A8A29B] mb-6 flex-grow">
           <div className="flex justify-between border-b border-[#2F3540] pb-1.5">
@@ -35,7 +42,7 @@ export default function ProductCard({ id, title, dimensions, strength, price, im
             <span className="text-base font-black text-[#F2EFE9]">{price}</span>
           </div>
           <a 
-            href={`/catalog/${id}`} 
+            href={getUrl(`catalog/${id}`)} 
             className="inline-flex items-center justify-center rounded-md bg-[#1A1D21] border border-[#2F3540] px-3 py-1.5 text-xs font-bold text-[#F2EFE9] hover:bg-[#23272E] hover:border-accent transition-colors shadow-sm"
           >
             Подробнее

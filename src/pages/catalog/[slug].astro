@@ -29,6 +29,8 @@ const {
   price 
 } = product.data;
 
+const displayImage = image.startsWith('/') ? `${import.meta.env.BASE_URL}${image.slice(1)}` : `${import.meta.env.BASE_URL}${image}`;
+
 // Категории в читаемом виде
 const categoryLabels = {
   wall: 'Блок стеновой',
@@ -61,7 +63,7 @@ const productSchema = {
 <BaseLayout 
   title={seoTitle} 
   description={seoDescription}
-  image={image}
+  image={displayImage}
   productSchema={productSchema}
   activePage="Продукция"
 >
@@ -70,18 +72,18 @@ const productSchema = {
     <nav class="flex text-sm text-[#A8A29B] mb-8 font-semibold" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
-          <a href="/" class="hover:text-[#F2EFE9] transition-colors">Главная</a>
+          <a href={import.meta.env.BASE_URL} class="hover:text-[#F2EFE9] transition-colors">Главная</a>
         </li>
         <li>
           <div class="flex items-center">
             <span class="mx-2 text-slate-600">/</span>
-            <a href="/catalog" class="hover:text-[#F2EFE9] transition-colors">Продукция</a>
+            <a href={`${import.meta.env.BASE_URL}catalog`} class="hover:text-[#F2EFE9] transition-colors">Продукция</a>
           </div>
         </li>
         <li>
           <div class="flex items-center">
             <span class="mx-2 text-slate-600">/</span>
-            <a href={`/catalog?category=${category}`} class="hover:text-[#F2EFE9] transition-colors">
+            <a href={`${import.meta.env.BASE_URL}catalog?category=${category}`} class="hover:text-[#F2EFE9] transition-colors">
               {categoryLabels[category]}
             </a>
           </div>
@@ -100,7 +102,7 @@ const productSchema = {
       <!-- Блок с изображением -->
       <div class="aspect-square rounded-2xl bg-slate-800/40 border border-border-dark flex items-center justify-center relative overflow-hidden shadow-sm">
         <img 
-          src={image} 
+          src={displayImage} 
           alt={title} 
           loading="lazy" 
           class="object-cover w-full h-full"
@@ -161,13 +163,13 @@ const productSchema = {
           </div>
           <div class="flex flex-wrap gap-4">
             <a 
-              href="/contacts" 
+              href={`${import.meta.env.BASE_URL}contacts`} 
               class="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-accent-hover transition-colors"
             >
               Заказать расчет объема
             </a>
             <a 
-              href="/catalog" 
+              href={`${import.meta.env.BASE_URL}catalog`} 
               class="inline-flex items-center justify-center rounded-md border border-[#2F3540] bg-bg-card px-6 py-3 text-sm font-bold text-[#F2EFE9] shadow-sm hover:bg-bg-dark hover:border-accent transition-colors"
             >
               Вернуться в каталог

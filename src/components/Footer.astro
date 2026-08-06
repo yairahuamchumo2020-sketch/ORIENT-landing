@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <footer class="border-t border-border-dark bg-bg-dark py-16 text-[#A8A29B]">
@@ -24,28 +25,28 @@ const currentYear = new Date().getFullYear();
         <h3 class="text-sm font-extrabold tracking-wider text-[#F2EFE9] uppercase mb-4">Навигация</h3>
         <ul class="space-y-3 text-sm font-semibold">
           <li>
-            <a href="/" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Главная</a>
+            <a href={baseUrl} class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Главная</a>
           </li>
           <li>
-            <a href="/catalog" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Продукция</a>
+            <a href={`${baseUrl}catalog`} class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Продукция</a>
           </li>
           <li>
-            <a href="/#about" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">О заводе</a>
+            <a href={`${baseUrl}#about`} class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">О заводе</a>
           </li>
           <li>
-            <a href="/#objects" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Наши объекты</a>
+            <a href={`${baseUrl}#objects`} class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Наши объекты</a>
           </li>
           <li>
-            <a href="/#reviews" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Отзывы</a>
+            <a href={`${baseUrl}#reviews`} class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Отзывы</a>
           </li>
           <li>
-            <a href="/#calculator" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Калькулятор</a>
+            <a href={`${baseUrl}#calculator`} class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Калькулятор</a>
           </li>
           <li>
-            <a href="/#faq" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">FAQ</a>
+            <a href={`${baseUrl}#faq`} class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">FAQ</a>
           </li>
           <li>
-            <a href="/contacts" class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Контакты</a>
+            <a href={`${baseUrl}contacts`} class="hover:text-[#F2EFE9] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded px-1 transition-colors">Контакты</a>
           </li>
         </ul>
       </div>

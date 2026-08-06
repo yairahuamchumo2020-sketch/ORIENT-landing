@@ -68,7 +68,7 @@ import FAQ from '../components/FAQ.astro';
         </div>
         <div class="shrink-0">
           <a 
-            href="/contacts" 
+            href={`${import.meta.env.BASE_URL}contacts`} 
             class="inline-flex items-center justify-center rounded-md bg-accent px-8 py-4 text-sm font-bold text-white shadow-lg hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
           >
             Оставить заявку

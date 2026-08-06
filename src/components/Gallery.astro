@@ -1,40 +1,41 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
 const projects = [
   {
     title: 'Жилой комплекс «Алые паруса»',
     type: 'Жилой комплекс',
     address: '(г. Владивосток, ул. Крыгина, 94)',
-    image: '/images/obj-parusa.png'
+    image: `${baseUrl}images/obj-parusa.png`
   },
   {
     title: 'Торговый центр «Авиатор»',
     type: 'Торговый центр',
     address: '(г. Артём, ул. Фрунзе, 32а)',
-    image: '/images/obj-aviator.png'
+    image: `${baseUrl}images/obj-aviator.png`
   },
   {
     title: 'Жилой комплекс «Маринист»',
     type: 'Жилой комплекс',
     address: '(г. Владивосток, ул. Фонтанная, 3)',
-    image: '/images/obj-marinist.png'
+    image: `${baseUrl}images/obj-marinist.png`
   },
   {
     title: 'Бизнес-центр «Приморье»',
     type: 'Бизнес-центр',
     address: '(г. Владивосток, ул. Светланская, 51)',
-    image: '/images/obj-primorye.png'
+    image: `${baseUrl}images/obj-primorye.png`
   },
   {
     title: 'Коттедж в пос. Де-Фриз',
     type: 'Частный дом',
     address: '(Надеждинский р-н, Морской проезд, 8)',
-    image: '/images/obj-defriz.png'
+    image: `${baseUrl}images/obj-defriz.png`
   },
   {
     title: 'Жилой комплекс «Формат»',
     type: 'Малоэтажный жилой комплекс',
     address: '(п. Зима Южная, ул. Спортивная, 1)',
-    image: '/images/obj-format.png'
+    image: `${baseUrl}images/obj-format.png`
   }
 ];
 ---
@@ -50,7 +51,7 @@ const projects = [
           Наши объекты
         </h2>
       </div>
-      <a href="/catalog" class="mt-6 md:mt-0 inline-flex items-center justify-center rounded-md border border-[#C5C3BE] bg-white px-5 py-2.5 text-xs font-bold text-text-dark shadow-sm hover:border-accent hover:text-accent transition-colors">
+      <a href={`${baseUrl}catalog`} class="mt-6 md:mt-0 inline-flex items-center justify-center rounded-md border border-[#C5C3BE] bg-white px-5 py-2.5 text-xs font-bold text-text-dark shadow-sm hover:border-accent hover:text-accent transition-colors">
         Посмотреть продукцию
       </a>
     </div>

@@ -1,4 +1,5 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section class="relative overflow-hidden bg-bg-dark py-16 sm:py-20 lg:py-0 lg:min-h-[calc(100vh-80px)] lg:flex lg:items-stretch border-b border-border-dark">
@@ -22,13 +23,13 @@
         <!-- CTA кнопки в правильном порядке -->
         <div class="flex flex-wrap gap-4 mb-12 sm:mb-16">
           <a 
-            href="/catalog" 
+            href={`${baseUrl}catalog`} 
             class="inline-flex h-12 sm:h-14 items-center justify-center rounded-md border border-[#F2EFE9] bg-transparent px-6 sm:px-8 text-xs sm:text-sm font-extrabold text-[#F2EFE9] shadow-sm hover:bg-[#23272E] hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none transition-all"
           >
             Смотреть продукцию
           </a>
           <a 
-            href="/contacts" 
+            href={`${baseUrl}contacts`} 
             class="inline-flex h-12 sm:h-14 items-center justify-center rounded-md border border-transparent bg-accent px-6 sm:px-8 text-xs sm:text-sm font-extrabold text-white shadow-sm hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#F2EFE9] focus-visible:outline-none transition-all"
           >
             Получить предложение
@@ -95,7 +96,7 @@
       <!-- Изображение блоков справа -->
       <div class="lg:col-span-5 relative flex items-end justify-center lg:justify-end h-full w-full self-end">
         <img 
-          src="/images/block-wall-pallet.png" 
+          src={`${baseUrl}images/block-wall-pallet.png`} 
           alt="Высокопрочные андезитные блоки на поддоне ОРИЕНТ" 
           width="580"
           height="540"
