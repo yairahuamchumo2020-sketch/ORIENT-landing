@@ -1,6 +1,21 @@
 const baseUrl = import.meta.env.BASE_URL;
 const getUrl = (path) => {
   if (!path) return '';
+  
+  // Если путь уже является абсолютным внешним или уже содержит baseUrl, возвращаем как есть
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+    return path;
+  }
+  
+  if (path.startsWith(baseUrl)) {
+    return path;
+  }
+  
+  const baseWithoutSlash = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+  if (baseWithoutSlash && path.startsWith(baseWithoutSlash)) {
+    return path;
+  }
+  
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   return `${baseUrl}${cleanPath}`;
 };
