@@ -20,8 +20,8 @@ const getUrl = (path) => {
   return `${baseUrl}${cleanPath}`;
 };
 
-export default function ProductCard({ id, title, dimensions, strength, price, image }) {
-  const imageSrc = typeof image === 'object' ? image.src : getUrl(image);
+export default function ProductCard({ id, title, dimensions, strength, price, image, optimizedImage }) {
+  const imageSrc = optimizedImage || (typeof image === 'object' ? image.src : getUrl(image));
   
   return (
     <article className="flex flex-col overflow-hidden rounded-xl border border-border-dark bg-bg-card hover:border-accent/50 transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-0.5">

@@ -194,6 +194,7 @@ export default function CatalogView({ allProducts }) {
                 strength={product.data.strength}
                 price={product.data.price}
                 image={product.data.image}
+                optimizedImage={product.optimizedImage}
               />
             ))}
           </div>

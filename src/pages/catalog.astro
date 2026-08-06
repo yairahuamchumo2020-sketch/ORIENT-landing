@@ -1,10 +1,28 @@
 ---
 import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CatalogView from '../components/CatalogView.jsx';
 
 // Получаем все товары из контентной коллекции
-const allProducts = await getCollection('products');
+const rawProducts = await getCollection('products');
+
+// Оптимизируем изображения товаров для React-острова на этапе сборки
+const allProducts = await Promise.all(
+  rawProducts.map(async (product) => {
+    const optimized = await getImage({
+      src: product.data.image,
+      width: 400,
+      height: 400,
+      quality: 80,
+      format: 'webp'
+    });
+    return {
+      ...product,
+      optimizedImage: optimized.src
+    };
+  })
+);
 ---
 
 <BaseLayout 
