@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 
 const products = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx,json}', base: "./src/content/products" }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     category: z.enum(['wall', 'partition', 'ventilation', 'paving', 'curb']),
     price: z.string().default('По запросу'),
@@ -19,7 +19,7 @@ const products = defineCollection({
     description: z.string(),
     seoTitle: z.string(),
     seoDescription: z.string(),
-    image: z.string(), // Путь к изображению товара
+    image: image(), // Путь к изображению товара
   }),
 });
 

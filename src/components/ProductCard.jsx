@@ -6,12 +6,14 @@ const getUrl = (path) => {
 };
 
 export default function ProductCard({ id, title, dimensions, strength, price, image }) {
+  const imageSrc = typeof image === 'object' ? image.src : getUrl(image);
+  
   return (
     <article className="flex flex-col overflow-hidden rounded-xl border border-border-dark bg-bg-card hover:border-accent/50 transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-0.5">
       <div className="aspect-square bg-slate-800/40 flex items-center justify-center text-slate-400 relative overflow-hidden">
         {/* Изображение товара с ленивой загрузкой */}
         <img 
-          src={getUrl(image)} 
+          src={imageSrc} 
           alt={title} 
           loading="lazy" 
           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"

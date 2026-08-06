@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import blockWallPallet from '../assets/images/block-wall-pallet.png';
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
@@ -95,11 +97,12 @@ const baseUrl = import.meta.env.BASE_URL;
 
       <!-- Изображение блоков справа -->
       <div class="lg:col-span-5 relative flex items-end justify-center lg:justify-end h-full w-full self-end">
-        <img 
-          src={`${baseUrl}images/block-wall-pallet.png`} 
+        <Image 
+          src={blockWallPallet} 
           alt="Высокопрочные андезитные блоки на поддоне ОРИЕНТ" 
-          width="580"
-          height="540"
+          width={580}
+          height={540}
+          quality="80"
           class="object-contain object-bottom w-auto lg:h-[calc(100vh-80px)] lg:max-h-[calc(100vh-80px)] h-[400px] sm:h-[500px] drop-shadow-[0_25px_50px_rgba(0,0,0,0.6)] select-none pointer-events-none"
           loading="eager"
         />

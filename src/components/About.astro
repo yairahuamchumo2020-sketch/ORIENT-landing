@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import factoryProcessing from '../assets/images/factory-processing.png';
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
@@ -79,11 +81,12 @@ const baseUrl = import.meta.env.BASE_URL;
 
         <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl relative">
           <!-- Реальное изображение цеха с прозрачностью и наложением -->
-          <img 
-            src={`${baseUrl}images/factory-processing.png`} 
+          <Image 
+            src={factoryProcessing} 
             alt="Линия автоматизированного пропаривания блоков" 
-            width="640"
-            height="360"
+            width={640}
+            height={360}
+            quality="80"
             class="object-cover w-full h-full opacity-60 group-hover:scale-105 transition-transform duration-700 select-none pointer-events-none"
             loading="lazy"
           />

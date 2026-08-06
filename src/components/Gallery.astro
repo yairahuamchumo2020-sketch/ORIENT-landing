@@ -1,41 +1,49 @@
 ---
+import { Image } from 'astro:assets';
+import objParusa from '../assets/images/obj-parusa.png';
+import objAviator from '../assets/images/obj-aviator.png';
+import objMarinist from '../assets/images/obj-marinist.png';
+import objPrimorye from '../assets/images/obj-primorye.png';
+import objDefriz from '../assets/images/obj-defriz.png';
+import objFormat from '../assets/images/obj-format.png';
+
 const baseUrl = import.meta.env.BASE_URL;
 const projects = [
   {
     title: 'Жилой комплекс «Алые паруса»',
     type: 'Жилой комплекс',
     address: '(г. Владивосток, ул. Крыгина, 94)',
-    image: `${baseUrl}images/obj-parusa.png`
+    image: objParusa
   },
   {
     title: 'Торговый центр «Авиатор»',
     type: 'Торговый центр',
     address: '(г. Артём, ул. Фрунзе, 32а)',
-    image: `${baseUrl}images/obj-aviator.png`
+    image: objAviator
   },
   {
     title: 'Жилой комплекс «Маринист»',
     type: 'Жилой комплекс',
     address: '(г. Владивосток, ул. Фонтанная, 3)',
-    image: `${baseUrl}images/obj-marinist.png`
+    image: objMarinist
   },
   {
     title: 'Бизнес-центр «Приморье»',
     type: 'Бизнес-центр',
     address: '(г. Владивосток, ул. Светланская, 51)',
-    image: `${baseUrl}images/obj-primorye.png`
+    image: objPrimorye
   },
   {
     title: 'Коттедж в пос. Де-Фриз',
     type: 'Частный дом',
     address: '(Надеждинский р-н, Морской проезд, 8)',
-    image: `${baseUrl}images/obj-defriz.png`
+    image: objDefriz
   },
   {
     title: 'Жилой комплекс «Формат»',
     type: 'Малоэтажный жилой комплекс',
     address: '(п. Зима Южная, ул. Спортивная, 1)',
-    image: `${baseUrl}images/obj-format.png`
+    image: objFormat
   }
 ];
 ---
@@ -62,9 +70,12 @@ const projects = [
         <article class="relative rounded-2xl border border-[#D5D3CE] bg-white overflow-hidden shadow-md flex flex-col hover:border-accent hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
           <!-- Фото объекта -->
           <div class="aspect-video w-full bg-stone-100 overflow-hidden relative">
-            <img 
+            <Image 
               src={proj.image} 
               alt={proj.title} 
+              width={400}
+              height={225}
+              quality="80"
               loading="lazy" 
               class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
             />
